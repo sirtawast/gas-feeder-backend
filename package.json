@@ -1,0 +1,19 @@
+{
+  "name": "gas-haku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "firebase deploy --only functions"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "firebase": "^11.2.0",
+    "iso-8859-15": "^1.1.0",
+    "request": "^2.88.2",
+    "x-ray": "^2.3.4"
+  }
+}

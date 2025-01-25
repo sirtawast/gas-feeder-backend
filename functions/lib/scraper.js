@@ -25,8 +25,7 @@ function prepareXray() {
 
   const driver = function driver(context, callback) {
     const convert = function(body) {
-      // eslint-disable-next-line new-cap
-      const bufferedBody = new Buffer.from(body, "binary").toString("binary");
+      const bufferedBody = Buffer.from(body, "binary").toString("binary");
       return iso885915.decode(bufferedBody);
     };
 
@@ -43,4 +42,19 @@ function prepareXray() {
 
 const scraper = prepareXray();
 
-module.exports = scraper;
+const scrapeSelectors = {
+  body: [
+    {
+      id: "tr:nth-child(1) a@href | formatId",
+      link: "tr:nth-child(1) a@href",
+      title: "tr:nth-child(1) a",
+      desc: ".msg",
+      price: ".msg+br+br+b | formatPrice",
+      img: ".tori-thumb@src",
+      imgFull: ".tori-thumb@src | formatImageFull",
+    },
+  ],
+  pagination: ".tori-pageselector-bottom td:nth-child(2) a:nth-child(2)",
+};
+
+module.exports = {scraper, scrapeSelectors};
